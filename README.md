@@ -96,13 +96,15 @@ Skill_Connect/
 ## 🔧 Environment Variables
 
 ### Backend (`back/.env`)
-SECRET_KEY=your_secret_key
+SECRET_KEY=your_secret_key    
 ALLOWED_HOSTS=*
-
+<hr>
 ### Frontend (`front/frontend/.env`)
 Nothing to do here😊😊
 
+<hr>
 
+## Insatallation & Setup
 ### Clone the Repository    
 ```bash
 git clone https://github.com/yogeswar2006/Skill-Connect.git
@@ -117,20 +119,20 @@ Starts everything:
 docker compose up --build  
 ```  
 
-# URL Routing
+## URL Routing
 
-## Backend URL
+#### Backend URL
 ```bash
   http://localhost:8000
 ```
 
-## Frontend URL
+#### Frontend URL
 ```bash
   http://localhost:5173
 ```
 
-# Without Docker
-## Backend (Without Docker)
+## Without Docker
+#### Backend (Without Docker)
 
 ```bash
 cd back  
@@ -148,13 +150,16 @@ npm run dev # starts server
 ```
 
 ### visit above URLS  
+<hr>
+
+
 
 
 # DEMO SCREENSHOTS  
 
 ## Home  
 
-<img width="1909" height="956" alt="Image" src="https://github.com/user-attachments/assets/d96dc333-9e6b-4ab1-ab2a-c1c4b761e1ff" />
+<img  width="1909" height="956" alt="Image" src="https://github.com/user-attachments/assets/d96dc333-9e6b-4ab1-ab2a-c1c4b761e1ff" />
 
 ## Register  
 <img width="1919" height="953" alt="Image" src="https://github.com/user-attachments/assets/f0ff2582-28fe-4658-934c-f21ebec7160d" />
@@ -185,7 +190,7 @@ npm run dev # starts server
 
 
 
-----------------------------------------THE END----------------------------------------
+------------------------------------------❤️THE END❤️--------------------------------------
 
 
 
