@@ -28,7 +28,7 @@ load_dotenv(os.path.join(BASE_DIR,'.env'))
 SECRET_KEY =os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG','False')=='True'
+DEBUG = True
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS",'*').split(',')
 
@@ -110,7 +110,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],  # or your redis host:port
+            "hosts": [("redis", 6379)],  # or your redis host:port
         },
     },
 }

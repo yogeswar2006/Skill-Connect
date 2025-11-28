@@ -12,11 +12,11 @@ function Navbar(){
 
                     <Link to={"/features"} className="text-xl hidden md:text-2xl md:inline-block">Features</Link>
                     <Link to={"/about"} className="text-xl hidden md:text-2xl md:inline-block">About</Link>
-                    <Link to={"/register"} className="text-xl md:text-2xl bg-[#020025] p-2 rounded hidden md:inline-block">Get Started</Link>
+                    <Link to={"/register"} className="text-xl md:text-2xl bg-[#020025] p-2 rounded hidden hover:bg-[#090979] md:inline-block">Get Started</Link>
               </div>
 
               <div className="md:hidden flex justify-center items-center">
-                 <Link to={"/register"} className=" text-white text-xl md:text-2xl bg-[#020025] p-2 rounded  ">Get Started</Link>
+                 <Link to={"/register"} className=" text-white hover:bg-blue-800 hover:text-amber-50 text-xl md:text-2xl bg-[#020025] p-2 rounded  ">Get Started</Link>
               </div>
               
           </div>
