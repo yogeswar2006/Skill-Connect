@@ -17,10 +17,12 @@ django-cloudinary-storage==0.3.0
 django-cors-headers==4.9.0
 djangorestframework==3.16.1
 djangorestframework_simplejwt==5.5.1
+gunicorn==25.0.1
 hyperlink==21.0.0
 idna==3.11
 incremental==24.7.2
 msgpack==1.1.2
+packaging==26.0
 pillow==11.3.0
 psycopg==3.3.2
 psycopg-binary==3.3.2
