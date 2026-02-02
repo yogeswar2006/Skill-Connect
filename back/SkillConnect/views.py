@@ -18,7 +18,7 @@ from friends.models import FriendRequest
 class Userview(viewsets.ModelViewSet):
     queryset=CustomUser.objects.all()
     serializer_class=UserSerializer
-    permission_classes=[IsAuthenticated]
+   
     
 
 
