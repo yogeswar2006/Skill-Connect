@@ -29,6 +29,9 @@ COPY --from=frontend /frontend/dist /var/www/frontend
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 ENV SECRET_KEY=dummy-build-key
+ENV DATABASE_URL=sqlite:///buildtime.db
+ENV REDIS_URL=redis://localhost:6379
+ENV DEBUG=False
 
 RUN python manage.py collectstatic --noinput
 
