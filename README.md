@@ -99,8 +99,7 @@ Skill_Connect/
 SECRET_KEY=your_secret_key    
 ALLOWED_HOSTS=*
 <hr>
-
-### Frontend (`front/frontend/.env`)  
+### Frontend (`front/frontend/.env`)
 Nothing to do here😊😊
 
 <hr>
