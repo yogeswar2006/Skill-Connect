@@ -1,10 +1,4 @@
-# ---------- FRONTEND BUILD ----------
-FROM node:22-alpine AS frontend
-WORKDIR /frontend
-COPY front/frontend/package*.json ./
-RUN npm install
-COPY front/frontend .
-RUN npm run build
+
 
 # ---------- BACKEND ----------
 FROM python:3.12-slim
@@ -23,10 +17,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY back .
 
-# copy frontend build into nginx
-COPY --from=frontend /frontend/dist /var/www/frontend
-
-COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 ENV SECRET_KEY=dummy-build-key
 ENV DATABASE_URL=sqlite:///buildtime.db
@@ -37,5 +27,5 @@ RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
 
-CMD sh -c "python manage.py migrate && gunicorn backend.wsgi:application --bind 0.0.0.0:8000"
+CMD sh -c "python manage.py migrate && daphne backend.asgi:application --bind 0.0.0.0 --port 8000"
 
