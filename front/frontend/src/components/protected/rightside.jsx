@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import SearchFriends from "./searchFriends";
 import Friends from "./friendsList";
 import Friendrequest from "./friendRequests";
+import friends from "../../assets/friends.png"
+import friendRequests from "../../assets/friendRequests.png"
+import searchFriend from "../../assets/searchFriend.png"
 
 
 const RightSidebar = () => {
@@ -17,7 +20,7 @@ const RightSidebar = () => {
             activeTab === "friends" ? "text-blue-400 font-semibold" : ""
           }`}
           onClick={() => setActiveTab("friends")} 
-          src="/src/assets/friends.png"
+          src={friends}
         >
          
         </img>
@@ -27,7 +30,7 @@ const RightSidebar = () => {
             activeTab === "requests" ? "text-blue-400 font-semibold" : ""
           }`}
           onClick={() => setActiveTab("requests")}
-           src="/src/assets/friendRequests.png"
+           src={friendRequests}
         >
          
         </img>
@@ -37,7 +40,7 @@ const RightSidebar = () => {
             activeTab === "search" ? "text-blue-400 font-semibold" : ""
           }`}
           onClick={() => setActiveTab("search")}
-           src="/src/assets/searchFriend.png"
+           src={searchFriend}
         >
           
         </img>

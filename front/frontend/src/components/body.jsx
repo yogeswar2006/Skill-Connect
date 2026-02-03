@@ -1,4 +1,8 @@
 import { Link } from "react-router-dom"
+import exampleImage from "../assets/ss1.png"
+import searchIcon from "../assets/search.svg"
+import messageIcon from "../assets/chat-left-dots.svg"
+import codeIcon from "../assets/code-square.svg"
 
 function Body(){
     return(
@@ -11,7 +15,7 @@ function Body(){
                       <Link to={"/register"} className="  text-xl  hover:bg-sky-300 font-bold md:text-2xl bg-[#FC8E3C] p-2 rounded">Get Started</Link>
                 </div>
                 <div className="md:flex gap-2">
-                    <img src="src/assets/ss1.png" className=" w-90  md:w-150 rounded" alt="demo img"></img>
+                    <img src={exampleImage} className=" w-90  md:w-150 rounded" alt="demo img"></img>
                     
                     
                 </div>
@@ -22,19 +26,19 @@ function Body(){
 
             <div className="text-white flex flex-col md:flex-row p-3  justify-center gap-2 items-center md:gap-5 mb-10 mt-10">
                 <div className="flex w-70 flex-col wrap-break-word justify-center  md:w-80 bg-[#08086B] p-5 rounded-2xl">
-                     <img src="src/assets/search.svg" alt="search" className="w-10 "></img>
+                     <img src={searchIcon} alt="search" className="w-10 "></img>
                     <h1 className="text-2xl flex wrap-break-word  font-bold">Find Skilled People</h1>
                     <p className="md:text-xl flex wrap-break-word text-gray-300">Browse developers with specific skills and expertise.</p>
                 </div>
 
                 <div className="flex w-70 flex-col wrap-break-word justify-center md:w-80 bg-[#08086B] p-5 rounded-2xl">
-                     <img src="src/assets/chat-left-dots.svg" alt="message" className="w-10"></img>
+                     <img src={messageIcon} alt="message" className="w-10"></img>
                     <h1 className="text-2xl flex wrap-break-word font-bold">Message Instantly</h1>
                     <p className="md:text-xl  flex wrap-break-word  text-gray-300">Communicate via direct messages with real time.</p>
                 </div>
 
                 <div className="flex w-70 flex-col wrap-break-word justify-center md:w-80 bg-[#08086B] p-5 rounded-2xl">
-                     <img src="src/assets/code-square.svg" alt="code" className="w-10"></img>
+                     <img src={codeIcon} alt="code" className="w-10"></img>
                     <h1 className="text-2xl flex wrap-break-word font-bold">Share your code</h1>
                     <p className="md:text-xl  flex wrap-break-word  text-gray-300">Easily share and colloborate on code snippets.</p>
                 </div>

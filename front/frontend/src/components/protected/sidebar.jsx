@@ -4,6 +4,12 @@ import { useContext, useEffect, useState } from "react"
 
 import { useNavigate } from "react-router-dom"
 import Profile from "./profile";
+import Logo from "../../assets/logo1.png"
+import DashboardIcon from "../../assets/dashboard.png"
+import MessagesIcon from "../../assets/messages.png"
+import GroupsIcon from "../../assets/groups.png"
+import FavoritesIcon from "../../assets/favorites.png"
+import FilesIcon from "../../assets/files.png"
 
 
 
@@ -41,31 +47,31 @@ function Sidebar(){
             <div className=" bg-[#06063f] flex flex-col gap-5 justify-start items-start h-full w-[300px] md:p-10 ">
 
                  <div className="flex items-center gap-2">
-                    <img src="/src/assets/logo1.png" className=" w-10 md:w-9" />
+                    <img src={Logo} className=" w-10 md:w-9" />
                     <h1 className="text-2xl text-center font-bold text-slate-300" >Skill Connect</h1>
 
                  </div>
 
                 <div className="flex flex-1 flex-col justify-start items-start">
                     <div className="flex justify-center items-center gap-5 md:mb-5 md:mt-5">
-                    <img src="/src/assets/dashboard.png" className="w-6 hover:cursor-pointer hover:bg-[linear-gradient(120deg,#fdfbfb_0%,#ebedee_100%)] bg-[linear-gradient(to_right,#4facfe_0%,#00f2fe_100%)]   p-1 rounded"></img>
+                    <img src={DashboardIcon} className="w-6 hover:cursor-pointer hover:bg-[linear-gradient(120deg,#fdfbfb_0%,#ebedee_100%)] bg-[linear-gradient(to_right,#4facfe_0%,#00f2fe_100%)]   p-1 rounded"></img>
                     <Link className="text-slate-400 text-xl font-medium  hover:text-white" to={'/userdashboard/'}>Dashboard</Link>
                 </div>
 
                 <div className="flex justify-center items-center gap-5  md:mb-5 ">
-                    <img src="/src/assets/messages.png" className="w-6 hover:cursor-pointer hover:bg-[linear-gradient(120deg,#fdfbfb_0%,#ebedee_100%)] bg-[linear-gradient(to_right,#4facfe_0%,#00f2fe_100%)]  rounded p-1"></img>
+                    <img src={MessagesIcon} className="w-6 hover:cursor-pointer hover:bg-[linear-gradient(120deg,#fdfbfb_0%,#ebedee_100%)] bg-[linear-gradient(to_right,#4facfe_0%,#00f2fe_100%)]  rounded p-1"></img>
                     <Link className="text-slate-400 text-xl font-medium hover:text-white" to={'/userdashboard/chat/'} >Messages</Link>
                 </div>
                 <div className="flex justify-center items-center gap-5  md:mb-5 ">
-                    <img src="/src/assets/groups.png" className="w-6 hover:cursor-pointer hover:bg-[linear-gradient(120deg,#fdfbfb_0%,#ebedee_100%)] bg-[linear-gradient(to_right,#4facfe_0%,#00f2fe_100%)]  rounded p-1"></img>
+                    <img src={GroupsIcon} className="w-6 hover:cursor-pointer hover:bg-[linear-gradient(120deg,#fdfbfb_0%,#ebedee_100%)] bg-[linear-gradient(to_right,#4facfe_0%,#00f2fe_100%)]  rounded p-1"></img>
                     <Link className="text-slate-400 text-xl font-medium  hover:text-white">Groups</Link>
                 </div>
                 <div className="flex justify-center items-center gap-5  md:mb-5">
-                    <img src="/src/assets/favorites.png" className="w-6 hover:cursor-pointer hover:bg-[linear-gradient(120deg,#fdfbfb_0%,#ebedee_100%)] bg-[linear-gradient(to_right,#4facfe_0%,#00f2fe_100%)]  rounded p-1"></img>
+                    <img src={FavoritesIcon} className="w-6 hover:cursor-pointer hover:bg-[linear-gradient(120deg,#fdfbfb_0%,#ebedee_100%)] bg-[linear-gradient(to_right,#4facfe_0%,#00f2fe_100%)]  rounded p-1"></img>
                     <Link className="text-slate-400 text-xl font-medium  hover:text-white">Favorites</Link>
                 </div>
                 <div className="flex justify-center items-center gap-5  md:mb-5 ">
-                    <img src="/src/assets/files.png" className="w-6 hover:cursor-pointer hover:bg-[linear-gradient(120deg,#fdfbfb_0%,#ebedee_100%)] bg-[linear-gradient(to_right,#4facfe_0%,#00f2fe_100%)]  rounded p-1"></img>
+                    <img src={FilesIcon} className="w-6 hover:cursor-pointer hover:bg-[linear-gradient(120deg,#fdfbfb_0%,#ebedee_100%)] bg-[linear-gradient(to_right,#4facfe_0%,#00f2fe_100%)]  rounded p-1"></img>
                     <Link className="text-slate-400 text-xl font-medium  hover:text-white">Files</Link>
                 </div>
                 </div>

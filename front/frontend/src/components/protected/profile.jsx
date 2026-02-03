@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../authcontext";
 import { Link } from "react-router-dom";
+import profile_bg from "../../assets/profile_bg.png"
 
 function Profile() {
 
@@ -70,7 +71,7 @@ useEffect(()=>{
     
       <div className="relative w-full h-[330px] overflow-hidden">
         <img
-          src="/src/assets/profile_bg.png"
+          src={profile_bg}
           className="absolute w-full h-full object-cover blur-sm opacity-40"
         />
 
@@ -95,7 +96,7 @@ useEffect(()=>{
         <div className="relative bg-white text-black w-full max-w-3xl p-8 rounded-2xl shadow-[0_0_30px_rgba(0,0,0,0.30)]">
          
           <img
-            src="/src/assets/profile_bg.png"
+            src={profile_bg}
             className="absolute -top-14 left-1/2 -translate-x-1/2 w-28 h-28 rounded-full shadow-lg object-cover"
           />
 

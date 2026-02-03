@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom"
+import Logo from "../assets/logo1.png"
+
 function Navbar(){
     return(
         <>
           <div className="flex justify-between md:justify-around p-5">
               <div className="flex items-center gap-2">
-                    <img src="src/assets/logo1.png" alt="logo" className=" w-10 md:w-12"></img>
+                    <img src={Logo} alt="logo" className=" w-10 md:w-12"></img>
                     <h2 className="text-white text-xl md:text-3xl font-medium">SkillConnect</h2>
               </div>
 

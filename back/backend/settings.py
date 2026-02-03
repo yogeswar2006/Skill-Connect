@@ -34,7 +34,12 @@ REDIS_URL = os.getenv("REDIS_URL")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS",'*').split(',')
+
+ALLOWED_HOSTS = [
+    "skill-connect-1m9u.onrender.com",
+    ".onrender.com",
+]
+
 
 
 # Application definition
@@ -89,13 +94,21 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173", 
+     "http://localhost:5173", 
+    "https://skill-connect-pearl.vercel.app",
 ]
 
 
-CORS_ALLOW_ALL_ORIGINS = True
+
 
 CORS_ALLOW_CREDENTIALS = True
+
+# 🔑 REQUIRED for cross-domain cookies (Vercel ↔ Render)
+SESSION_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = True
+
+CSRF_COOKIE_SAMESITE = "None"
+CSRF_COOKIE_SECURE = True
 
 
 
