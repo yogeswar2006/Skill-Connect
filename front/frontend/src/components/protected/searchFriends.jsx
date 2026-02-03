@@ -1,6 +1,7 @@
 import { AuthContext } from "../../authcontext"
 import { useContext, useState } from "react"
 import { toast, ToastContainer } from "react-toastify";
+import searchsvg from "../../assets/search.svg"
 
 
 function SearchFriends(){
@@ -43,7 +44,7 @@ function SearchFriends(){
          <div className="flex justify-between md:min-w-[250px] p-1">
                <div className="flex items-center bg-[linear-gradient(to_right,#4facfe_0%,#00f2fe_100%)] rounded-lg shadow-md overflow-hidden w-full max-w-md "> 
                  <input onChange={(e)=>{setQuery(e.target.value)}} type="text" placeholder="Search for friend?" className="flex-1 px-2 py-2 text-gray-700 focus:outline-none" />
-                  <img onClick={Fetchfriends} src="/src/assets/search.svg" className=" hover:bg-indigo-700 rounded text-white px-2 py-2 transition"></img>
+                  <img onClick={Fetchfriends} src={searchsvg} className=" hover:bg-indigo-700 rounded text-white px-2 py-2 transition"></img>
                </div>
                 
            </div>

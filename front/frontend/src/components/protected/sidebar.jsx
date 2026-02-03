@@ -77,10 +77,11 @@ function Sidebar(){
                 </div>
 
                 <div onClick={()=>{navigate('/userdashboard/profile')}} className=" btn-profile pl-4 pr-4 py-1 rounded-bl-2xl rounded-t-2xl flex justify-center items-center gap-2">
-                    <img  src={`http://localhost:8000${profile_img}`} alt="Profile" className="w-10  rounded"></img>
+                    <img  src={profile_img} alt="img" className="w-10  rounded"></img>
                     <div className="flex flex-col ">
                         <h1 className="text-xl text-slate-700 font-bold">{currentUser}</h1>
-                        <h1 className="text-slate-800 ">{email}</h1>
+                        {/* <h1 className="text-slate-800 ">{email.toLowerCase()}</h1> */}
+                        <h1 className="text-slate-800 font-bold">new bee...</h1>
                     </div>
                 </div>
 
