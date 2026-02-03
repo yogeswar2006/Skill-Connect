@@ -45,10 +45,10 @@ const ChatPage = ({ currentUserId, receiverId }) => {
 
   //  WebSocket setup
   useEffect(() => {
-    if (!currentUserId || !receiverId) return;
+    if (!currentUserId || !receiverId || !accessToken) return;
 
     // const token = getCookie("refresh") || "";
-    const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
+    // const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
     const socketUrl = `${import.meta.env.VITE_WS_BASE_URL}/ws/chat/${roomName}/?token=${accessToken}`;
 
     socketRef.current = new WebSocket(socketUrl);
@@ -69,8 +69,8 @@ const ChatPage = ({ currentUserId, receiverId }) => {
       setSocketReady(false);
     };
 
-    return () => socketRef.current.close();
-  }, [roomName]);
+    return () => socketRef.current?.close();
+  }, [roomName,accessToken]);
 
   //  Send message
   const handleSendMessage = (msg_type) => {
