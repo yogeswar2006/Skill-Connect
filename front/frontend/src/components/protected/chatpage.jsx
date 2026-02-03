@@ -12,7 +12,7 @@ const ChatPage = ({ currentUserId, receiverId }) => {
   const [newMessage, setNewMessage] = useState("");
   const socketRef = useRef(null);
   const messagesEndRef = useRef(null);
-  const { api } = useContext(AuthContext);
+  const { api,accessToken } = useContext(AuthContext);
   const [socketReady, setSocketReady] = useState(false);
   const [showCodeModel,setShowCodeModel]=useState(false)
   const [code,setCode]=useState("")
@@ -47,9 +47,9 @@ const ChatPage = ({ currentUserId, receiverId }) => {
   useEffect(() => {
     if (!currentUserId || !receiverId) return;
 
-    const token = getCookie("refresh") || "";
+    // const token = getCookie("refresh") || "";
     const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
-    const socketUrl = `${wsProtocol}://localhost:8000/ws/chat/${roomName}/?refresh=${token}`;
+    const socketUrl = `${import.meta.env.VITE_WS_BASE_URL}/ws/chat/${roomName}/?token=${accessToken}`;
 
     socketRef.current = new WebSocket(socketUrl);
 

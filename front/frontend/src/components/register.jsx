@@ -36,7 +36,7 @@ function Register() {
 
 
     try{
-       const response=await axios.post('http://127.0.0.1:8000/user/users/',data)
+       const response=await axios.post(`${import.meta.env.VITE_API_BASE_URL}/user/users/`,data)
        console.log(response.data)
        console.log("user created successfull!")
        toast.success("Registration Successfull😊")

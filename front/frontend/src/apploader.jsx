@@ -10,7 +10,7 @@ function AppLoader({ children }) {
     const refreshAccess = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8000/user/api/token/refresh/",
+          `${import.meta.env.VITE_API_BASE_URL}/user/api/token/refresh/`,
           {},
           { withCredentials: true } // important: send cookie
         );
