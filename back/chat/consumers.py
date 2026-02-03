@@ -217,6 +217,9 @@ from .models import Messages
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.user = self.scope.get("user")
+        
+        print("WS USER:", self.scope["user"])
+
 
         # 🔒 Reject unauthenticated users
         if not self.user or self.user.is_anonymous:
