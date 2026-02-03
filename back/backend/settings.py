@@ -94,14 +94,15 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 CSRF_TRUSTED_ORIGINS = [
-     "http://localhost:5173", 
+    
     "https://skill-connect-pearl.vercel.app",
 ]
 
-
-
-
 CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "https://skill-connect-pearl.vercel.app",
+]
 
 # 🔑 REQUIRED for cross-domain cookies (Vercel ↔ Render)
 SESSION_COOKIE_SAMESITE = "None"
