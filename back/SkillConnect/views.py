@@ -33,8 +33,8 @@ class CookieTokenObtainPairView(TokenObtainPairView):
                 key='refresh_token',
                 value=refresh,
                 httponly=True,
-                secure=False,  # True in production with HTTPS
-                samesite='Strict',
+                secure=True,  # True in production with HTTPS
+                samesite='None',
                 max_age=7*24*60*60
             )
             del response.data['refresh']  # remove refresh from JSON
@@ -50,7 +50,7 @@ class CookieTokenRefreshView(TokenRefreshView):
         return super().post(request, *args, **kwargs)
 
 
-@csrf_exempt
+
 def LogoutView(request):
     logout(request)
     response=JsonResponse({"message":"Logged out successfully!"})
