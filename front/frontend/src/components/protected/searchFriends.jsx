@@ -2,6 +2,7 @@ import { AuthContext } from "../../authcontext"
 import { useContext, useState } from "react"
 import { toast, ToastContainer } from "react-toastify";
 import searchsvg from "../../assets/search.svg"
+import addFriendsvg from "../../assets/add-friend-1.svg"
 
 
 function SearchFriends(){
@@ -13,7 +14,7 @@ function SearchFriends(){
 
        const SendFriendRequest = async (receiverId) => {
   try {
-    const data = { receiver_id: receiverId }; // ✅ correct
+    const data = { receiver_id: receiverId }; 
     const response = await api.post("friend/friend-requests/", data, {
       withCredentials: true,
     });
@@ -54,11 +55,11 @@ function SearchFriends(){
               {fetchedFriends.length>0?(
                 fetchedFriends.map((f)=>(
                  <div key={f.id} className="flex justify-between ">
-                    <img src={`http://localhost:8000${f.profile_img}`} className="w-10 bg-white rounded"></img>   {/*profile_img*/}
+                    <img src={f.profile_img} className="w-10 bg-white rounded"></img>   {/*profile_img*/}
                     <div className="flex justify-start">
                         <h1 className="text-white teat-medium text-xl">{f.username}</h1>
                      </div>
-                    <img src="/src/assets/add-friend-1.svg" onClick={()=>SendFriendRequest(f.id)} className="w-8 h-8 hover:bg-sky-400   rounded  " ></img>  {/*add friend*/}
+                    <img src={addFriendsvg} onClick={()=>SendFriendRequest(f.id)} className="w-8 h-8 hover:bg-sky-400   rounded  " ></img>  {/*add friend*/}
                  </div>
 ))
               ):
