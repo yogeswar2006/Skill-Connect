@@ -31,7 +31,7 @@ class CookieTokenObtainPairView(TokenObtainPairView):
             refresh = response.data['refresh']
             response.set_cookie(
                 key='refresh_token',
-                value=refresh,
+                value=refresh,  
                 httponly=True,
                 secure=True,  # True in production with HTTPS
                 samesite='None',

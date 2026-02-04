@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
   );
 
   const login = async (username,password) => {
-    const res = await api.post('user/api/token/', {username,password});
+    const res = await api.post('user/api/token/',{withCredentials:true}, {username,password});
     setAccessToken(res.data.access);
    
     setUser({ username }); 

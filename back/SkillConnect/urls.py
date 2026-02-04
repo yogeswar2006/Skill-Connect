@@ -5,7 +5,7 @@ from rest_framework.routers import DefaultRouter
 from .views import Userview,CookieTokenObtainPairView,CookieTokenRefreshView,LogoutView,Current_user,FetchedUsers
 
 
-router=DefaultRouter()
+router=DefaultRouter()  
 
 router.register(r'users',Userview)
 
