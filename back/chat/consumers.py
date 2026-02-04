@@ -216,14 +216,18 @@ from .models import Messages
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
+        
+        
         self.user = self.scope.get("user")
         
+       
+        print("WS QUERY STRING:", self.scope["query_string"])
         print("WS USER:", self.scope["user"])
 
 
         # 🔒 Reject unauthenticated users
         if not self.user or self.user.is_anonymous:
-            await self.close()
+            await self.close(code=403)
             return
 
         # Get user IDs from URL
