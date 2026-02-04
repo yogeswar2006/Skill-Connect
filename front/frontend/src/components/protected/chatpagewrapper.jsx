@@ -3,6 +3,8 @@ import { AuthContext } from "../../authcontext";
 import { useParams } from "react-router-dom";
 import { useContext,useState,useEffect } from "react";
 import ChatPage from "./chatpage";
+import styled from "styled-components";
+
 
 
 function  ChatPageWrapper() {
