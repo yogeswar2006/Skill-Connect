@@ -217,7 +217,7 @@ from .models import Messages
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         print("🔥 CONNECT HIT")
-        await self.accept()
+        
         
         user = self.scope.get("user")
           # # 🔒 Reject unauthenticated users
@@ -238,43 +238,22 @@ class ChatConsumer(AsyncWebsocketConsumer):
             await self.close(code=403)
             return
         
-        ids = sorted([user1_id, user2_id])
+        ids = sorted([user1_id, user2_id])  
         self.room_group_name = f"chat_{ids[0]}_{ids[1]}"
         
         await self.channel_layer.group_add(self.room_group_name, self.channel_name)
-        await self.accept()
-        print("WS CONNECTED:", self.user.username, self.room_group_name)  
+        
+        print("WS CONNECTED:", user.username, self.room_group_name)  
 
         
        
         print("WS QUERY STRING:", self.scope["query_string"])
         print("WS USER:", self.scope["user"])
 
-
+        await self.accept()
       
-        self.user = user
 
-        # # Get user IDs from URL
-        # # self.user1_id = int(self.scope["url_route"]["kwargs"]["user1_id"])
-        # # self.user2_id = int(self.scope["url_route"]["kwargs"]["user2_id"])
-      
        
-       
-        
-        
-        
-
-        
-
-        # # Optional system message
-        # await self.channel_layer.group_send(
-        #     self.room_group_name,
-        #     {
-        #         "type": "system_message",
-        #         "message": f"{self.user.username} joined the chat",
-        #     },
-        # )
-
          
 
     async def disconnect(self, close_code):
@@ -298,11 +277,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
         print("WS disconnect error:", e)
 
 
-async def receive(self, text_data=None, bytes_data=None):
-    if not text_data:
+    async def receive(self, text_data=None, bytes_data=None):
+      if not text_data:
         return
 
-    try:
+      try:
         user = self.scope.get("user")
 
         # 🔒 Safety check
@@ -350,7 +329,7 @@ async def receive(self, text_data=None, bytes_data=None):
             },
         )
 
-    except Exception as e:
+      except Exception as e:
         print("WebSocket receive error:", repr(e))
 
 
