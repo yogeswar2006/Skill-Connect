@@ -12,6 +12,7 @@ from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from friends.models import FriendRequest
+from rest_framework_simplejwt.exceptions import TokenError
 
 # Create your views here.
 
@@ -42,12 +43,35 @@ class CookieTokenObtainPairView(TokenObtainPairView):
 
 # Custom Refresh endpoint using HttpOnly cookie
 class CookieTokenRefreshView(TokenRefreshView):
-    def post(self, request, *args, **kwargs):
+     def post(self, request, *args, **kwargs):
         refresh_token = request.COOKIES.get('refresh_token')
+
         if not refresh_token:
-            return Response({"detail": "No refresh token cookie"}, status=status.HTTP_401_UNAUTHORIZED)
-        request.data['refresh'] = refresh_token
-        return super().post(request, *args, **kwargs)
+            return Response(
+                {"detail": "No refresh token cookie"},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+        try:
+            # 🔥 IMPORTANT: make request data mutable
+            data = request.data.copy()
+            data["refresh"] = refresh_token
+
+            serializer = self.get_serializer(data=data)
+            serializer.is_valid(raise_exception=True)
+
+            return Response(
+                serializer.validated_data,
+                status=status.HTTP_200_OK
+            )
+
+        except TokenError:
+            # 👇 THIS IS WHERE IT GOES
+            response = Response(
+                {"detail": "Invalid or expired refresh token"},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+            response.delete_cookie("refresh_token")
+            return response
 
 
 
