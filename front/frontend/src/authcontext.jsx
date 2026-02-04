@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 
  const api = axios.create({
     baseURL: `${import.meta.env.VITE_API_BASE_URL}/`,
-    withCredentials: true,
+    
   });
 
 
@@ -165,8 +165,6 @@ export const AuthProvider = ({ children }) => {
   const refreshAccessToken = async () => {
     const res = await api.post(
       'user/api/token/refresh/',
-      {},
-      { withCredentials: true }
     );
     return res.data.access;
   };
