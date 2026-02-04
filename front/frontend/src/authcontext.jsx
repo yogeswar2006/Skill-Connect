@@ -47,8 +47,8 @@ export const AuthProvider = ({ children }) => {
     }
   );
 
-  const login = async (username,password) => {
-    const res = await api.post('user/api/token/',{withCredentials:true}, {username,password});
+  const login = async (username,password) => {   //  axios.post(url,data,config)
+    const res = await api.post('user/api/token/',{username,password},{withCredentials:true});
     setAccessToken(res.data.access);
    
     setUser({ username }); 
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async() => {
     
       try{
-             const response=await api.post('user/logout/',{withCredentials:true});
+             const response=await api.post('user/logout/',{},{withCredentials:true});
              setAccessToken(null);
              setUser(null);
             navigate('/login') 
@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const refreshAccessToken = async () => {
-    const res = await api.post('user/api/token/refresh/',{withCredentials:true});
+    const res = await api.post('user/api/token/refresh/',{},{withCredentials:true});
     return res.data.access;
   };
 
