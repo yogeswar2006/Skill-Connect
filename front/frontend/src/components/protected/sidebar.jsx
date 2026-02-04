@@ -32,7 +32,7 @@ function Sidebar(){
             setCurrentUser(response.data.username)
             setProfile_img(response.data.profile_img)
             setEmail(response.data.email)
-            console.log(response.data)
+            
           }
     
           get_current_user()
@@ -64,15 +64,15 @@ function Sidebar(){
                 </div>
                 <div className="flex justify-center items-center gap-5  md:mb-5 ">
                     <img src={GroupsIcon} className="w-6 hover:cursor-pointer hover:bg-[linear-gradient(120deg,#fdfbfb_0%,#ebedee_100%)] bg-[linear-gradient(to_right,#4facfe_0%,#00f2fe_100%)]  rounded p-1"></img>
-                    <Link className="text-slate-400 text-xl font-medium  hover:text-white">Groups</Link>
+                    <Link className="text-slate-400 text-xl font-medium  hover:text-white" to={'/userdashboard/groups'}>Groups</Link>
                 </div>
                 <div className="flex justify-center items-center gap-5  md:mb-5">
                     <img src={FavoritesIcon} className="w-6 hover:cursor-pointer hover:bg-[linear-gradient(120deg,#fdfbfb_0%,#ebedee_100%)] bg-[linear-gradient(to_right,#4facfe_0%,#00f2fe_100%)]  rounded p-1"></img>
-                    <Link className="text-slate-400 text-xl font-medium  hover:text-white">Favorites</Link>
+                    <Link className="text-slate-400 text-xl font-medium  hover:text-white" to={'/userdashboard/favorites'}>Favorites</Link>
                 </div>
                 <div className="flex justify-center items-center gap-5  md:mb-5 ">
                     <img src={FilesIcon} className="w-6 hover:cursor-pointer hover:bg-[linear-gradient(120deg,#fdfbfb_0%,#ebedee_100%)] bg-[linear-gradient(to_right,#4facfe_0%,#00f2fe_100%)]  rounded p-1"></img>
-                    <Link className="text-slate-400 text-xl font-medium  hover:text-white">Files</Link>
+                    <Link className="text-slate-400 text-xl font-medium  hover:text-white" to={'/userdashboard/files'}>Files</Link>
                 </div>
                 </div>
 

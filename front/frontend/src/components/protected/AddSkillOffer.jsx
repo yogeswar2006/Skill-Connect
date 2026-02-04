@@ -14,12 +14,21 @@ function AddSkillOffer({closeModals}){
             name:name,
             description:description
         },{withCredentials:true})
-           window.alert("Work added Successfull")
+           
             toast.success("Work Offered Successfull!")
          setTimeout(() => closeModals(), 3000);
        }catch(error){
-            console.log("Error at handleing Workoffer submit",error)
-             toast.error("Work Offer failed")
+          if (import.meta.env.DEV) {
+            console.error("WorkOffer submit error:", error);
+          }
+
+          if (error.code === "ECONNABORTED") {
+            toast.error("Server is waking up. Please try again.");
+          } else {
+            toast.error("Work Offer failed");
+          }
+            
+           toast.error("Work Offer failed")
        }
     }
    

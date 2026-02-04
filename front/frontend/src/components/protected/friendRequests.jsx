@@ -1,5 +1,6 @@
 import { useContext, useState,useEffect } from "react"
 import { AuthContext } from "../../authcontext"
+import { toast } from "react-toastify"
 
 
 function  Friendrequest(){
@@ -10,24 +11,24 @@ function  Friendrequest(){
     const handleAccept= async(id)=>{
         try{
             const response=await api.patch(`/friend/friend-requests/${id}/accept/`)
-            console.log(response.data)
-            
             setRequest((prev) => prev.filter((r) => r.id !== id));
-            
+            toast.success("Friend request accepted")
+
         }catch(error){
-            console.log(error.response.data)
+            
+            toast.error("Failed to accept friend request")
         }
-    }
+    } 
 
     const handleDecline=async(id)=>{
         try{
              const response=await api.patch(`/friend/friend-requests/${id}/decline/`)
-             console.log(response.data)
+            toast.success("Friend request declined")
              
 
              setRequest((prev) => prev.filter((r) => r.id !== id));
         }catch(error){
-            console.log(error.response.data)
+                toast.error("Failed to decline friend request")
             
         }
     }

@@ -43,19 +43,18 @@ const ChatPage = ({ currentUserId, receiverId }) => {
     return null;
   }
 
-  //  WebSocket setup
+  
   useEffect(() => {
     if (!currentUserId || !receiverId || !accessToken) return;
 
-    // const token = getCookie("refresh") || "";
-    // const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
+    
     const socketUrl = `${import.meta.env.VITE_WS_BASE_URL}/ws/chat/${roomName}/?token=${accessToken}`;
-   console.log("url bypaseed")
+   
     socketRef.current = new WebSocket(socketUrl);
-  console.log("sockect ref sockect created")
+  
     socketRef.current.onopen = () => {
       console.log(" WebSocket connected");
-      console.log("inside websocket")
+      
       setSocketReady(true);
     };
 
@@ -67,11 +66,6 @@ const ChatPage = ({ currentUserId, receiverId }) => {
 
     socketRef.current.onclose = (event) => {
       console.log("WebSocket disconnected");
-      console.log("This is problem")
-       console.log("WS closed");
-  console.log("Code:", event.code);
-  console.log("Reason:", event.reason);
-  console.log("Was clean:", event.wasClean);
       setSocketReady(false);
     };
 

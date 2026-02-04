@@ -10,10 +10,13 @@ import PublicRoute from "./components/publicroute";
 import ChatPageWrapper from "./components/protected/chatpagewrapper";
 import ChatPage from "./components/protected/chatpage";
 import Profile from "./components/protected/profile";
+import GroupsPage from "./components/protected/groups";
+import FilesPage from "./components/protected/files";
+import FavoritesPage from "./components/protected/favourites";
 
 
 
-function App() {
+function App() { 
   return (
     <>
       <AuthProvider>
@@ -24,6 +27,9 @@ function App() {
             <Route path="login" element={<PublicRoute><Login /></PublicRoute>} />
             <Route path="userdashboard/chat/:receiverId" element={<ChatPageWrapper />} />
             <Route path="userdashboard/chat/" element={<ChatPage />} />
+            <Route path="userdashboard/groups/" element={<PrivateRoute><GroupsPage/></PrivateRoute>} />
+            <Route path="userdashboard/files/" element={<PrivateRoute><FilesPage/></PrivateRoute>} />
+            <Route path="userdashboard/favorites/" element={<PrivateRoute><FavoritesPage/></PrivateRoute>} />
             <Route
               path="userdashboard"
               element={

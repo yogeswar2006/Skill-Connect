@@ -1,4 +1,4 @@
-// ModalWrapper.jsx
+
 export default function ModalWrapper({ children, onClose }) {
   return (
     <>

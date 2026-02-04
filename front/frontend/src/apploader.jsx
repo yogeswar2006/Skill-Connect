@@ -31,7 +31,7 @@ function AppLoader({ children }) {
 
   if (loading) return (
     <StyledWrapper>
-      <div className="loader">Loading
+      <div className="loader bg-slate-900">Loading
         <span />
       </div>
     </StyledWrapper>
@@ -63,6 +63,7 @@ const StyledWrapper = styled.div`
     text-transform: uppercase;
     text-shadow: 0 0 10px #0066ff;
     box-shadow: 0 0 20px rgba(0, 0, 0, .15);
+    background-color: #0f1319
   }
 
   .loader::before {

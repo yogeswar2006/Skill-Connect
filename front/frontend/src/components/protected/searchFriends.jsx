@@ -13,18 +13,18 @@ function SearchFriends(){
         
 
        const SendFriendRequest = async (receiverId) => {
-  try {
-    const data = { receiver_id: receiverId }; 
-    const response = await api.post("friend/friend-requests/", data, {
-      withCredentials: true,
-    });
-    console.log("Friend request sent successfully!", response.data);
-    toast.success("Friend request sent successfully!");
-  } catch (error) {
-    console.error("Error sending friend request:", error.response?.data || error);
-    toast.error("Friend request failed to sent")
-  }
-};
+          try {
+            const data = { receiver_id: receiverId }; 
+            const response = await api.post("friend/friend-requests/", data, {
+              withCredentials: true,
+            });
+            
+            toast.success("Friend request sent successfully!");
+          } catch (error) {
+           
+            toast.error("Friend request failed to sent")
+          }
+   }; 
 
 
         
@@ -32,7 +32,7 @@ function SearchFriends(){
         if (!query || query.trim() === "") return; 
         try{
             const response=await api.get(`user/fetchedusers/${query}/`,{withCredentials:true})
-            console.log(response.data)
+           
             setFetchedFriends(response.data)
         }catch(error){
              console.log("Error at fetchiing queried friends",error)

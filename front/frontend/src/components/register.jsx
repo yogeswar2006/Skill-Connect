@@ -37,14 +37,14 @@ function Register() {
 
     try{
        const response=await axios.post(`${import.meta.env.VITE_API_BASE_URL}/user/users/`,data)
-       console.log(response.data)
-       console.log("user created successfull!")
+       
+      
        toast.success("Registration Successfull😊")
 
          navigate('/login')
     }catch (error){
-        console.log(error.response.data)
-        console.log("Unsuccessfull!")
+       
+       
         toast.error("Registration Failed😥")
       
     }

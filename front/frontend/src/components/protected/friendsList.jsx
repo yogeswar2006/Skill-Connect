@@ -13,7 +13,7 @@ function Friends(){
               try{
                  const response=await api.get('/friend/friend-requests/friends')
                  setFriends(response.data)
-                  console.log(response.data)
+                  
                   setfriendsCount(response.data.length)
               }catch(error){
                     console.log(error.response.data)

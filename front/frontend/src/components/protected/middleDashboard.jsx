@@ -20,11 +20,10 @@ const Middle = () => {
   
          const SendFriendRequest = async (receiverId) => {
     try {
-      const data = { receiver_id: receiverId }; // ✅ correct
+      const data = { receiver_id: receiverId }; 
       const response = await api.post("friend/friend-requests/", data, {
         withCredentials: true,
       });
-      console.log("Friend request sent successfully!", response.data);
       
       toast.success("Friend request sent successfully!");
     } catch (error) {
@@ -42,7 +41,7 @@ const Middle = () => {
          try{
            const offers=await api.get('work/all/workOffer/',{withCredentials:true})
            setWorkOffers(offers.data)
-           console.log(offers.data)
+           
         }catch(error){
             console.log("error at fetching workoffers",error)
         }

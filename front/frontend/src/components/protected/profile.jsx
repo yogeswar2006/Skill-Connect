@@ -8,14 +8,14 @@ function Profile() {
   const {api,logout,userinfo,setuserinfo}=useContext(AuthContext)
   const [Skills,setSkills]=useState([])
    const {CurrentUserOffers,setCurrentuserOffers}=useContext(AuthContext)
-  console.log(userinfo)
+  
 
   useEffect(()=>{
        const FetchUSerSkills=async()=>{
            try{
                 const response=await api.get('work/all/addSkill/CurrentUserSkills/',{withCredentials:true})
                
-                console.log("skills fetched",response.data)
+               
                  setSkills(response.data)
            }catch(error){
             console.log(error)
@@ -25,9 +25,6 @@ FetchUSerSkills()
 
   },[])
 
-useEffect(()=>{
- 
-  },[Skills])
 
   
 
@@ -38,33 +35,12 @@ useEffect(()=>{
         const response=await api.get('user/current_user/')
      
         setuserinfo(response.data)
-        console.log(userinfo.username)
-        
       }
 
       get_current_user()
   }, []);
 
-  const skills = [
-    "JavaScript",
-    "React",
-    "Python",
-    "Django",
-    "Tailwind CSS",
-    "SQLite",
-    "Git",
-    "WebSockets",
-    "Node.js",
-    "C++",
-  ];
-
-  const works = [
-    { title: "Portfolio Website", desc: "A modern personal portfolio." },
-    { title: "Chat App", desc: "Real-time chat with WebSockets." },
-    { title: "Spotify Clone", desc: "Music player UI + backend." },
-    { title: "Task Manager", desc: "Full CRUD task dashboard." },
-    { title: "Django Auth", desc: "User signup/login system." },
-  ];
+  
 
   return (
     <div className="bg-gray-900 min-h-screen text-white">
@@ -77,7 +53,7 @@ useEffect(()=>{
 
         <div className="absolute top-30 z-100  right-5  ">
             <button  onClick={()=>{logout();
-              console.log("Logout clicked")
+              
             }} className="bg-red-800   p-2 rounded font-medium ">Logout</button>
             <Link to={'/userdashboard'} className=" bg-green-500  text-black ml-2 p-2 rounded font-medium">Dashboard</Link>
         </div>

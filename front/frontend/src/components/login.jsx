@@ -16,19 +16,17 @@ function Login(){
      e.preventDefault()
  
     try{
-        // const response=await axios.post("http://127.0.0.1:8000/user/api/token/",data)
-        // console.log(response.data)
+        
         await login(username,password);
         
         toast.success("Login Successfull")
         navigate('/userdashboard')
-    }catch(err){
-       console.log(err)
-        console.log("Unsuccessfull logged in!")
+    }catch(error){
+      
         toast.error("Login Failed")
     }
     }
-
+  
     return (
         <>
          <div  className  ="text-white min-h-screen w-full bg-[linear-gradient(90deg,rgba(2,0,36,1)_0%,rgba(11,11,163,1)_66%,rgba(0,212,255,1)_100%)] bg-fixed flex  justify-center items-center">

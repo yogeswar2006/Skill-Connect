@@ -28,7 +28,7 @@ const AddSkill = ({ closeModal }) => {
         const res = await api.get(`work/all/skills/?q=${search}`);
         setSkills(res.data);
       } catch (err) {
-        console.error("Error fetching skills:", err);
+        console.error("Error at fetching skills:", err);
       } finally {
         setLoading(false);
       }
@@ -36,7 +36,7 @@ const AddSkill = ({ closeModal }) => {
 
     const delaySearch = setTimeout(() => {
       fetchSkills();
-    }, 400); // debounce typing
+    }, 400); 
 
     return () => clearTimeout(delaySearch);
   }, [search]);
@@ -61,8 +61,8 @@ const AddSkill = ({ closeModal }) => {
       setTimeout(() => closeModal(), 3000);
     
     } catch (err) {
-      console.error("Error adding skill:", err);
-      toast.error("Skill Added failed");
+      console.error("Error at adding skill:", err);
+      toast.error("Skill updation failed");
     }
   };
 
@@ -87,7 +87,6 @@ const AddSkill = ({ closeModal }) => {
               className="border p-2 rounded-md w-full"
             />
 
-            {/* Dropdown Results */}
             {skills.length > 0 && !selectedSkill && (
               <ul className="absolute bg-white border rounded-md w-full  max-h-40 overflow-y-auto mt-1 z-50 shadow-md">
                 {skills.map((skill, idx) => (
@@ -111,7 +110,7 @@ const AddSkill = ({ closeModal }) => {
             )}
           </div>
 
-          {/* Other Fields */}
+          
 
           <label className="font-medium text-start">Proficiency</label>
           <select value={Proficiency} onChange={(e)=>{setProficiency(e.target.value)}}  className="border p-2 rounded-md" >
