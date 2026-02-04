@@ -216,11 +216,11 @@ from .models import Messages
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        print("🔥 CONNECT HIT")
+        
         
         
         user = self.scope.get("user")
-          # # 🔒 Reject unauthenticated users
+          #  Reject unauthenticated users
         if not user or user.is_anonymous:
             await self.close(code=403)
             return
@@ -243,12 +243,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         
         await self.channel_layer.group_add(self.room_group_name, self.channel_name)
         
-        print("WS CONNECTED:", user.username, self.room_group_name)  
-
-        
        
-        print("WS QUERY STRING:", self.scope["query_string"])
-        print("WS USER:", self.scope["user"])
 
         await self.accept()
       
@@ -284,7 +279,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
       try:
         user = self.scope.get("user")
 
-        # 🔒 Safety check
+        
         if not user or user.is_anonymous:
             await self.close(code=403)
             return

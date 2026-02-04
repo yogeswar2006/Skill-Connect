@@ -38,6 +38,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     "skill-connect-1m9u.onrender.com",
     ".onrender.com",
+     "localhost",
+    "127.0.0.1",
 ]
 
 
@@ -95,6 +97,7 @@ MIDDLEWARE = [
 ]
 CSRF_TRUSTED_ORIGINS = [
     
+    "https://skill-connect-1m9u.onrender.com",
     "https://skill-connect-pearl.vercel.app",
 ]
 
@@ -110,6 +113,7 @@ SESSION_COOKIE_SECURE = True
 
 CSRF_COOKIE_SAMESITE = "None"
 CSRF_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
 
