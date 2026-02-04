@@ -216,48 +216,49 @@ from .models import Messages
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
+        print("🔥 CONNECT HIT")
+        await self.accept()
         
-        
-        self.user = self.scope.get("user")
+        # self.user = self.scope.get("user")
         
        
-        print("WS QUERY STRING:", self.scope["query_string"])
-        print("WS USER:", self.scope["user"])
+        # print("WS QUERY STRING:", self.scope["query_string"])
+        # print("WS USER:", self.scope["user"])
 
 
-        # 🔒 Reject unauthenticated users
-        if not self.user or self.user.is_anonymous:
-            await self.close(code=403)
-            return
+        # # 🔒 Reject unauthenticated users
+        # if not self.user or self.user.is_anonymous:
+        #     await self.close(code=403)
+        #     return
 
-        # Get user IDs from URL
-        # self.user1_id = int(self.scope["url_route"]["kwargs"]["user1_id"])
-        # self.user2_id = int(self.scope["url_route"]["kwargs"]["user2_id"])
+        # # Get user IDs from URL
+        # # self.user1_id = int(self.scope["url_route"]["kwargs"]["user1_id"])
+        # # self.user2_id = int(self.scope["url_route"]["kwargs"]["user2_id"])
       
-        room_name = self.scope["url_route"]["kwargs"]["room_name"]
-        try:
-             _, id1, id2 = room_name.split("_")
-             self.user1_id = int(id1)
-             self.user2_id = int(id2)
-        except Exception:
-            await self.close(code=4001)
-            return
+        # room_name = self.scope["url_route"]["kwargs"]["room_name"]
+        # try:
+        #      _, id1, id2 = room_name.split("_")
+        #      self.user1_id = int(id1)
+        #      self.user2_id = int(id2)
+        # except Exception:
+        #     await self.close(code=4001)
+        #     return
         
-        ids = sorted([self.user1_id, self.user2_id])
-        self.room_group_name = f"chat_{ids[0]}_{ids[1]}"
+        # ids = sorted([self.user1_id, self.user2_id])
+        # self.room_group_name = f"chat_{ids[0]}_{ids[1]}"
 
-        await self.channel_layer.group_add(self.room_group_name, self.channel_name)
-        await self.accept()
-        print("WS CONNECTED:", self.user.username, self.room_group_name)   
+        # await self.channel_layer.group_add(self.room_group_name, self.channel_name)
+        # await self.accept()
+        # print("WS CONNECTED:", self.user.username, self.room_group_name)   
 
-        # Optional system message
-        await self.channel_layer.group_send(
-            self.room_group_name,
-            {
-                "type": "system_message",
-                "message": f"{self.user.username} joined the chat",
-            },
-        )
+        # # Optional system message
+        # await self.channel_layer.group_send(
+        #     self.room_group_name,
+        #     {
+        #         "type": "system_message",
+        #         "message": f"{self.user.username} joined the chat",
+        #     },
+        # )
 
          
 
