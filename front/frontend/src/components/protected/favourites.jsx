@@ -4,7 +4,7 @@ import styled from 'styled-components';
 function FavoritesPage() {
 
     return (
-        <div className="min-h-screen flex justify-center items-center bg-slate-900">
+        <div className="min-h-screen flex flex-col gap-2 justify-center items-center bg-slate-900">
               <div className="flex justify-center items-center">
                 <h1 className="text-2xl font-bold text-white">Deployed Soon...</h1>
               </div>
