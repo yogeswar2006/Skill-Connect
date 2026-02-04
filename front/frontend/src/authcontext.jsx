@@ -164,7 +164,7 @@ export const AuthProvider = ({ children }) => {
 
   const refreshAccessToken = async () => {
     const res = await api.post(
-      'user/api/token/refresh/',
+      'user/api/token/refresh/',{},{ withCredentials: true }
     );
     return res.data.access;
   };
