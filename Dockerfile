@@ -1,6 +1,6 @@
 
 
-# ---------- BACKEND ----------
+
 FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -27,5 +27,5 @@ RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
 
-CMD sh -c "python manage.py migrate && daphne backend.asgi:application --bind 0.0.0.0 --port 8000"
+CMD sh -c "python manage.py migrate && python manage.py create_admin && daphne backend.asgi:application --bind 0.0.0.0 --port 8000"
 

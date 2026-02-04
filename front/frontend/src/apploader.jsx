@@ -30,11 +30,13 @@ function AppLoader({ children }) {
   }, [setAccessToken]); 
 
   if (loading) return (
-    <StyledWrapper>
+    <div className="min-h-screen bg-slate-900">
+      <StyledWrapper>
       <div className="loader bg-slate-900">Loading
         <span />
       </div>
     </StyledWrapper>
+    </div>
   )
 
   return <>{children}</>; // render children after refresh attempt
