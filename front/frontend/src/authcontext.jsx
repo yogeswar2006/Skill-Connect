@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async() => {
     
       try{
-             const response=await api.post('user/logout/')
+             const response=await api.post('user/logout/',{withCredentials:true});
              setAccessToken(null);
              setUser(null);
             navigate('/login') 
@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const refreshAccessToken = async () => {
-    const res = await api.post('user/api/token/refresh/');
+    const res = await api.post('user/api/token/refresh/',{withCredentials:true});
     return res.data.access;
   };
 
