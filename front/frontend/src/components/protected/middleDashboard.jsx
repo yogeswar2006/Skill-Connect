@@ -39,7 +39,7 @@ const Middle = () => {
     
        const fetchOffers=async()=>{
          try{
-           const offers=await api.get('work/all/workOffer/',{withCredentials:true})
+           const offers=await api.get('work/all/workOffer/',{ withCredentials:true })
            setWorkOffers(offers.data)
            
         }catch(error){
@@ -56,7 +56,7 @@ const Middle = () => {
     useEffect(()=>{
         const fetchUserOffers=async()=>{
             try{
-                const response=await api.get('work/all/workOffer/CurrentUserSkillOffers/',{withCredentials:true})
+                const response=await api.get('work/all/workOffer/CurrentUserSkillOffers/',{ withCredentials:true })
                 setCurrentuserOffers(response.data)
                 setSkillOfferCount(response.data.length)
             }catch(error){

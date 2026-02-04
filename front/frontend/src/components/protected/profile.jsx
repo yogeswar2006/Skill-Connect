@@ -32,7 +32,7 @@ FetchUSerSkills()
   useEffect(() => {
       
       const get_current_user=async()=>{
-        const response=await api.get('user/current_user/')
+        const response=await api.get('user/current_user/',{},{ withCredentials:true })
      
         setuserinfo(response.data)
       }
