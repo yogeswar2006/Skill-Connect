@@ -11,9 +11,19 @@ const Middle = () => {
 
   const [open,setOpenSkill]=useState(false)
   const [openOffer,setOpenOffer]=useState(false)
-  const {api,friendsCount,requestCount,skillOfferCount ,setSkillOfferCount}=useContext(AuthContext)
+  const {
+  api,
+  accessToken,
+  friendsCount,
+  requestCount,
+  skillOfferCount,
+  setSkillOfferCount,
+  CurrentUserOffers,setCurrentuserOffers
+
+} = useContext(AuthContext)
+
   const [workOffers,setWorkOffers]=useState([])
-  const {CurrentUserOffers,setCurrentuserOffers}=useContext(AuthContext)
+  
   const [sent,setSent]=useState(false)
 
 
@@ -35,36 +45,52 @@ const Middle = () => {
   
 
 
-  useEffect(()=>{
-    
-       const fetchOffers=async()=>{
-         try{
-           const offers=await api.get('work/all/workOffer/',{ withCredentials:true })
-           setWorkOffers(offers.data)
-           
-        }catch(error){
-            console.log("error at fetching workoffers",error)
-        }
-       }
-        fetchOffers()
+useEffect(() => {
+  if (!accessToken) return;
 
-        const interval=setInterval(fetchOffers, 5000);
-        return ()=>clearInterval(interval)
+  const fetchOffers = async () => {
+    try {
+      const res = await api.get(
+        'work/all/workOffer/',
+        { withCredentials: true }
+      );
+      setWorkOffers(res.data);
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        console.log("error at fetching workoffers", err);
+      }
+    }
+  };
 
-    },[])
+  fetchOffers();
 
-    useEffect(()=>{
-        const fetchUserOffers=async()=>{
-            try{
-                const response=await api.get('work/all/workOffer/CurrentUserSkillOffers/',{ withCredentials:true })
-                setCurrentuserOffers(response.data)
-                setSkillOfferCount(response.data.length)
-            }catch(error){
-                console.log("error at Fetching user skill offers",error)
-            }
-        }
-        fetchUserOffers()
-    },[])
+  const interval = setInterval(fetchOffers, 5000);
+  return () => clearInterval(interval);
+
+}, [accessToken]);
+
+
+   useEffect(() => {
+  if (!accessToken) return;
+
+  const fetchUserOffers = async () => {
+    try {
+      const res = await api.get(
+        'work/all/workOffer/CurrentUserSkillOffers/',
+        { withCredentials: true }
+      );
+      setCurrentuserOffers(res.data);
+      setSkillOfferCount(res.data.length);
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        console.log("error at Fetching user skill offers", err);
+      }
+    }
+  };
+
+  fetchUserOffers();
+}, [accessToken]);
+
 
 
   return (
