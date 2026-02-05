@@ -5,6 +5,8 @@ from .serializers import *
 from rest_framework import filters
 from rest_framework.response import Response
 from rest_framework import viewsets ,decorators,response,status
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 # Create your views here.
 
@@ -25,6 +27,8 @@ class SkillView(ModelViewSet):
         return queryset[:10]
     
 class UserSkillAdd(ModelViewSet):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
     queryset=UserSkill.objects.all()
     serializer_class=UserSKillAddSerializer
     
@@ -67,8 +71,8 @@ class UserSkillAdd(ModelViewSet):
     
 
 class WorkOfferViewset(ModelViewSet):
-    
- 
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
     serializer_class=WorkOfferSerializer
     
     def get_queryset(self):
@@ -94,7 +98,7 @@ class WorkOfferViewset(ModelViewSet):
         self.perform_create(serializer) 
         return Response(serializer.data,status=status.HTTP_201_CREATED)
     
-    @decorators.action(detail=False,methods=["get"])
+    @decorators.action(detail=False,methods=["get"],permission_classes=[IsAuthenticated])
     def CurrentUserSkillOffers(self,request):
         user=self.request.user
         offers=user.user_offers.all()
