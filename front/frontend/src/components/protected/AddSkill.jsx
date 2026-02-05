@@ -14,7 +14,7 @@ const AddSkill = ({ closeModal }) => {
   const [loading, setLoading] = useState(false);
   const [selectedSkillname,setSelectedSkillname]=useState("")
 
-  const {api}=useContext(AuthContext)
+  const {accessToken , api}=useContext(AuthContext)
 
  
   useEffect(() => {

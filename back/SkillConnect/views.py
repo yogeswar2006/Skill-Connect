@@ -94,13 +94,15 @@ class CookieTokenRefreshView(TokenRefreshView):
 def LogoutView(request):
     response = JsonResponse({"message": "Logged out successfully"})
 
-    response.delete_cookie(
+    response.set_cookie(
         key='refresh_token',
-        path='/',
+        value='',
+        httponly=True,
+        secure=True,
         samesite='None',
-        secure=True
+        max_age=0,   # 👈 expires immediately
+        path='/'
     )
-
     return response
 
 

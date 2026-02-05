@@ -3,12 +3,21 @@ import { AuthContext } from "../../authcontext"
 import { toast,ToastContainer } from "react-toastify"
 
 function AddSkillOffer({closeModals}){
-    const {api}=useContext(AuthContext)
-
+    const {api,accessToken,loading}=useContext(AuthContext)
+   
     const [name,setName]=useState('')
     const [description,setDescription]=useState('')
 
-    const handleOfferSubmit=async()=>{
+    const handleOfferSubmit=async(e)=>{
+
+          e.preventDefault(); // 🔥 VERY IMPORTANT
+
+    if (!accessToken) {
+      toast.error("Session expired. Please login again.");
+      return;
+    }
+
+
        try{
         const response=await api.post('work/all/workOffer/',{
             name:name,
