@@ -6,13 +6,17 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, permission_classes ,authentication_classes
 from django.http import JsonResponse 
 from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from friends.models import FriendRequest
 from rest_framework_simplejwt.exceptions import TokenError
+
+from django.http import JsonResponse
+
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 # Create your views here.
 
@@ -75,13 +79,30 @@ class CookieTokenRefreshView(TokenRefreshView):
 
 
 
-def LogoutView(request):
-    logout(request)
-    response=JsonResponse({"message":"Logged out successfully!"})
+# def LogoutView(request):
+#     logout(request)
+#     response=JsonResponse({"message":"Logged out successfully!"})
   
-    response.delete_cookie('refresh_token')
+#     response.delete_cookie('refresh_token')
     
+#     return response
+
+@csrf_exempt
+@api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def LogoutView(request):
+    response = JsonResponse({"message": "Logged out successfully"})
+
+    response.delete_cookie(
+        key='refresh_token',
+        path='/',
+        samesite='None',
+        secure=True
+    )
+
     return response
+
 
 
 @api_view(['GET'])
